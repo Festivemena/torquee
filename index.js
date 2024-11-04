@@ -115,6 +115,16 @@ app.post('/upload', upload.single('file'), async (req, res) => {
   }
 });
 
+app.get('/entries', async (req, res) => {
+  try {
+    const entries = await Yearbook.find();
+    res.json(entries);
+  } catch (error) {
+    console.error('Error fetching entries:', error);
+    res.status(500).send('Error fetching entries');
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
