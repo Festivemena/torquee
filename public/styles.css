@@ -1,0 +1,117 @@
+/* General Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 500px;
+  width: 90%;
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #444;
+  font-size: 1.8rem;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+input[type="file"],
+input[type="text"] {
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="file"] {
+  font-size: 14px;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  padding: 14px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 15px;
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  input[type="text"], input[type="file"] {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+/* Extra Small Devices (less than 400px) */
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  input[type="text"], input[type="file"] {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
