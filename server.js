@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import multer from 'multer';
 import { v2 as cloudinary } from 'cloudinary';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
-import mongooseSequence from 'mongoose-sequence';
+import mongooseSequence from 'mongoose-sequence'; // Correctly import mongoose-sequence
 import dotenv from 'dotenv';
 
 // Load environment variables
@@ -42,6 +42,9 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
   console.error('Failed to connect to MongoDB', err);
 });
 
+// Add auto-increment feature for user ID (after mongoose is initialized)
+const AutoIncrement = mongooseSequence(mongoose);  // Pass mongoose to mongoose-sequence
+
 // Define Mongoose schemas for candidates and users
 const candidateSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -57,8 +60,8 @@ const userSchema = new mongoose.Schema({
   voted: { type: Boolean, default: false },
 });
 
-// Add auto-increment feature for user ID
-userSchema.plugin(mongooseSequence, { inc_field: 'id' }); // Adds auto-incrementing "id"
+// Add auto-increment feature for user ID (after mongoose is initialized)
+userSchema.plugin(AutoIncrement, { inc_field: 'id' }); // Adds auto-incrementing "id"
 
 // Models
 const Candidate = mongoose.model('Candidate', candidateSchema);
