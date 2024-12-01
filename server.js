@@ -36,7 +36,7 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage: storage });
 
 // Connect to MongoDB using the URI from the .env file
-mongoose.connect(process.env.MONGO_URI).then(() => {
+mongoose.connect(`mongodb+srv://efemena:rucuG6Nbn6DCQJEg@cluster0.kcp2y.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`).then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
   console.error('Failed to connect to MongoDB', err);
